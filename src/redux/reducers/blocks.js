@@ -1,8 +1,9 @@
-import { getData } from "../actions";
+import { getData, addCoordinates } from "../actions";
 import { handleActions } from "redux-actions";
 
 const initialState = {
-  data: {},
+  data: { btc: [], main: [] },
+  coordinates: { btc: {}, main: {} },
   fetching: false
 };
 
@@ -12,7 +13,8 @@ export const blocks = handleActions(
     [getData.succeed]: (state, action) => {
       return { ...state, fetching: false, data: action.payload.data };
     },
-    [getData.failed]: state => initialState
+    [getData.failed]: state => initialState,
+    [addCoordinates]: (state, action) => ({...state, coordinates: action.payload}) 
   },
   initialState
 );
