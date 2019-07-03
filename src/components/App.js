@@ -54,6 +54,9 @@ const App = ({
             </div>
             {verifiedIn && btcCoordinates[verifiedIn] && mainCoordinates[id] && (
               <Arrow
+                mainWidth={mainCoordinates[id].width}
+                btcWidth={btcCoordinates[verifiedIn].width}
+                btcHight={btcCoordinates[verifiedIn].height}
                 xStart={mainCoordinates[id].x}
                 xEnd={btcCoordinates[verifiedIn].x}
                 yStart={mainCoordinates[id].y}
