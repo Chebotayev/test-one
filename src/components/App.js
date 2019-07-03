@@ -36,7 +36,8 @@ const App = ({
             className="top"
             key={id}
           >
-            {id}
+            <div>BTC</div>
+            <div>{id}</div>
           </div>
         ))}
       </div>
