@@ -52,7 +52,8 @@ const App = ({
               }}
               className="bottom"
             >
-              {id}
+              <div>{id}</div>
+              { verifiedIn && <div className='verified-in'>{`Verified in BTC ${verifiedIn}`}</div>}
             </div>
             {verifiedIn && btcCoordinates[verifiedIn] && mainCoordinates[id] && (
               <Arrow

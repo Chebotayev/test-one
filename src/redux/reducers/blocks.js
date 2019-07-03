@@ -1,6 +1,8 @@
 import { getData, addCoordinates, getNewData } from "../actions";
 import { handleActions } from "redux-actions";
 
+import updatedData from '../../mocks/updatedData';
+
 const initialState = {
   data: { btc: [], main: [] },
   coordinates: { btc: {}, main: {} },
@@ -16,32 +18,7 @@ export const blocks = handleActions(
     [getData.failed]: state => initialState,
     [addCoordinates]: (state, action) => ({...state, coordinates: action.payload}),
     [getNewData]: (state, action) => {
-      return ({...state, data: {
-        btc: [
-          {
-            id: 211
-          },
-          {
-            id: 11322
-          },
-          {
-            id: 11233
-          }
-        ],
-        main: [
-          {
-            id: 2121,
-            verifiedIn: 11322
-          },
-          {
-            id: 2122,
-            verifiedIn: 11233
-          },
-          {
-            id: 2312
-          }
-        ]
-      }})
+      return ({...state, data: updatedData.data })
     }
   },
   initialState
