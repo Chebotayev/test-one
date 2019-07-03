@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, Fragment } from "react";
 import { connect } from "react-redux";
-import { getData, addCoordinates } from "../redux/actions";
+import { getData, addCoordinates, getNewData } from "../redux/actions";
 import Arrow from "./Arrow";
 import "./assets/App.css";
 
@@ -9,7 +9,8 @@ const App = ({
   addCoordinates,
   data,
   btcCoordinates,
-  mainCoordinates
+  mainCoordinates,
+  getNewData
 }) => {
   const btc = {};
   const main = {};
@@ -67,6 +68,7 @@ const App = ({
           </Fragment>
         ))}
       </div>
+      <button onClick={getNewData}>Get new data</button>
     </div>
   );
 };
@@ -79,7 +81,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   getData: getData.processing,
-  addCoordinates
+  addCoordinates,
+  getNewData
 };
 
 export default connect(
