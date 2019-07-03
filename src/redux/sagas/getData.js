@@ -20,15 +20,14 @@ function fetchData() {
         main: [
           {
             id: 21,
-            verifiedIn: 13
+            verifiedIn: 12
           },
           {
             id: 22,
-            verifiedIn: 11
+            verifiedIn: 13
           },
           {
-            id: 23,
-            verifiedIn: 12
+            id: 23
           }
         ]
       }
