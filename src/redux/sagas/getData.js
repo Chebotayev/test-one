@@ -1,7 +1,6 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import { getData } from "../actions";
 import initData from '../../mocks/initData';
-import updatedData from '../../mocks/updatedData';
 // import api from "../../api";
 
 function fetchData() {
