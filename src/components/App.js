@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, Fragment } from "react";
+import React, { useEffect, Fragment, useCallback } from "react";
 import { connect } from "react-redux";
 import { getData, addCoordinates, getNewData } from "../redux/actions";
 import Arrow from "./Arrow";
@@ -15,15 +15,18 @@ const App = ({
   const btc = {};
   const main = {};
 
-  useEffect(() => {
+  const fetchData = useCallback(() => {
     getData();
-  }, []);
+  }, [getData]);
 
   useEffect(() => {
-    if (btc && main) addCoordinates({ btc, main });
-  }, [data]);
+    fetchData();
+  }, [fetchData]);
 
-  if(btcCoordinates["11"]) console.log(btcCoordinates["11"])
+  useEffect(() => {
+    console.log('a')
+    addCoordinates({ btc, main });
+  }, [data, addCoordinates]);
 
   return (
     <div>
@@ -31,8 +34,7 @@ const App = ({
         {data.btc.map(({ id }) => (
           <div
             ref={ref => {
-              if (ref !== null)
-                return (btc[id] = ref.getBoundingClientRect());
+              if (ref !== null) return (btc[id] = ref.getBoundingClientRect());
             }}
             className="top"
             key={id}
@@ -54,17 +56,19 @@ const App = ({
             >
               {id}
             </div>
-            {verifiedIn && btcCoordinates[verifiedIn] && mainCoordinates[id] && (
-              <Arrow
-                mainWidth={mainCoordinates[id].width}
-                btcWidth={btcCoordinates[verifiedIn].width}
-                btcHight={btcCoordinates[verifiedIn].height}
-                xStart={mainCoordinates[id].x}
-                xEnd={btcCoordinates[verifiedIn].x}
-                yStart={mainCoordinates[id].y}
-                yEnd={btcCoordinates[verifiedIn].y}
-              />
-            )}
+            {verifiedIn &&
+              btcCoordinates[verifiedIn] &&
+              mainCoordinates[id] && (
+                <Arrow
+                  mainWidth={mainCoordinates[id].width}
+                  btcWidth={btcCoordinates[verifiedIn].width}
+                  btcHight={btcCoordinates[verifiedIn].height}
+                  xStart={mainCoordinates[id].x}
+                  xEnd={btcCoordinates[verifiedIn].x}
+                  yStart={mainCoordinates[id].y}
+                  yEnd={btcCoordinates[verifiedIn].y}
+                />
+              )}
           </Fragment>
         ))}
       </div>
