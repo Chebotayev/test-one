@@ -11,7 +11,7 @@ const Arrow = ({
 }) => {
   const calcStartPointX = () => xStart + mainWidth / 2;
   const calcEndPointX = () => xEnd + btcWidth / 2;
-  const calcEndPointY = () => yEnd + btcHight;
+  const calcEndPointY = () => yEnd + btcHight + 3;
 
   return (
     <svg className="arrow">
@@ -31,8 +31,8 @@ const Arrow = ({
         y1={yStart}
         x2={calcEndPointX()}
         y2={calcEndPointY()}
-        fill="none"
-        stroke="black"
+        fill="blue"
+        stroke="blue"
         markerEnd="url(#arrow)"
       />
     </svg>
